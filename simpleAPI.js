@@ -27,14 +27,11 @@ const app = express();
  app.use(express.json())
  app.use(express.raw())
  app.put('/api/profile', (req, res) => {
-     let text = JSON.stringify(req.body)
-         fs.appendFile('./models/data.txt', text, 'utf8', (err, data) => {
+     //let text = JSON.stringify(req.body)
+         fs.appendFile('./models/data.txt', 'append this text', 'utf8', (err, data) => {
              console.log(req.body)
-             if (!err) {
-                res.send('Data recieved thank you')
-             } else { 
-                 return "Cannot write" + data
-             }
+             if (err) throw err;
+             console.log('Data received')
          })
  })
 
